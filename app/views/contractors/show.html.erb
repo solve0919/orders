@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @contractor.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contractor.name %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @contractor.adress %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @contractor.birthday %>
+</p>
+
+<p>
+  <strong>Prefectures:</strong>
+  <%= @contractor.prefectures %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @contractor.phone_number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @contractor.description %>
+</p>
+
+<%= link_to 'Edit', edit_contractor_path(@contractor) %> |
+<%= link_to 'Back', contractors_path %>

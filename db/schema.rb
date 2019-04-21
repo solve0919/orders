@@ -10,7 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_055516) do
+ActiveRecord::Schema.define(version: 2019_04_20_232111) do
+
+  create_table "confrectors", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "adress"
+    t.date "birthday"
+    t.string "prefectures"
+    t.string "phone_number"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contractors", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "adress"
+    t.date "birthday"
+    t.string "prefectures"
+    t.string "phone_number"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "postal_code"
+    t.string "prefectures"
+    t.string "ward"
+    t.string "address"
+    t.string "aparatment"
+    t.date "birthday"
+    t.string "settlement"
+    t.string "phone_number"
+    t.string "email"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

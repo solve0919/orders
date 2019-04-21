@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contractors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Adress</th>
+      <th>Birthday</th>
+      <th>Prefectures</th>
+      <th>Phone number</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contractors.each do |contractor| %>
+      <tr>
+        <td><%= contractor.user_id %></td>
+        <td><%= contractor.name %></td>
+        <td><%= contractor.adress %></td>
+        <td><%= contractor.birthday %></td>
+        <td><%= contractor.prefectures %></td>
+        <td><%= contractor.phone_number %></td>
+        <td><%= contractor.description %></td>
+        <td><%= link_to 'Show', contractor %></td>
+        <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
+        <td><%= link_to 'Destroy', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contractor', new_contractor_path %>
