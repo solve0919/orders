@@ -67,9 +67,7 @@ class ContractorsController < ApplicationController
 
   private
 
-    def set_current_user
-      @current_user = User.find_by(id: session[:user_id])
-    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_contractor
       @contractor = Contractor.find(params[:id])

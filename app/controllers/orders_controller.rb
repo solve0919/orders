@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  protect_from_forgery :except => [:new ,:create]
 
   # GET /orders
   # GET /orders.json
@@ -16,6 +17,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.user = current_user
+    @order.save
   end
 
   # GET /orders/1/edit

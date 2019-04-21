@@ -13,7 +13,8 @@ devise_scope :user do
   get "login", :to => "users/sessions#new"
   get "logout", :to => "users/sessions#destroy"
 end
-root "orders#index"
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
