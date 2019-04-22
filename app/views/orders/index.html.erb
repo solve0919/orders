@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+
+<h1>発注者一覧</h1>
 
 <table>
   <thead>
@@ -36,17 +37,16 @@
         <td><%= order.phone_number %></td>
         <td><%= order.email %></td>
         <td><%= order.description %></td>
-        <%  if @current_user == order.id  %>
-          <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Show', order %></td>
+        <% if current_user.id == order.user_id %>
           <td><%= link_to 'Edit', edit_order_path(order) %></td>
           <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% else %>
-        <% end %>
+        <% end  %>  
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
+<h4><%= link_to("発注者リストへ","/") %></h4>
 
 <%= link_to 'New Order', new_order_path %>

@@ -59,6 +59,7 @@
   <strong>Description:</strong>
   <%= @order.description %>
 </p>
-
+<% if current_user.id == @order.user_id %>
 <%= link_to 'Edit', edit_order_path(@order) %> |
+<% end %>
 <%= link_to 'Back', orders_path %>

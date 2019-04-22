@@ -1,27 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :ensure_correct_user , only: [:edit ,:update, :destroy]
   protect_from_forgery :except => [:new ,:create]
-
-
-  def choice
-    ログイン済み、
-    
-    両方登録なし
-    受注者として登録したい
-    発注者として登録したい
-
-    発注者のみ登録
-    発注したい
-    受注者になりたい
-    受注者のみ登録
-    発注者になりたい
-    受注者として作業をしたい
-    両方登録済み
-    
-    受注者登録済み
-
-  end
   
   # GET /orders
   # GET /orders.json
@@ -37,8 +17,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @order.user = current_user
-    @order.save
   end
 
   # GET /orders/1/edit
@@ -49,7 +27,8 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.user = current_user
+    @order.save
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -86,7 +65,15 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  def ensure_correct_user
+    if current_user.id != @order.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to("/orders")
+    end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
