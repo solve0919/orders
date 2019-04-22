@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Contractors</h1>
+<p><%= link_to("発注者になる","orders/new") %></p>
+<% if  Contractor.exists?(user_id: current_user) then  %>
+<p><%= link_to("受注者情報を変更する", "contractors/#{@contractor.id}") %></p>
+<% else %>
+<p><%= link_to('受注者になる', new_contractor_path) %></p>
+<% end %>
+<h1>受注者リスト</h1>
 
 <table>
   <thead>
@@ -26,9 +32,8 @@
         <td><%= contractor.prefectures %></td>
         <td><%= contractor.phone_number %></td>
         <td><%= contractor.description %></td>
-        <% if @current_user == contractor.id then  %>
-        
         <td><%= link_to 'Show', contractor %></td>
+        <% if current_user.id == contractor.user_id then  %>
         <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
         <td><%= link_to 'Destroy', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
@@ -40,4 +45,4 @@
 
 <br>
 
-<%= link_to 'New Contractor', new_contractor_path %>
+

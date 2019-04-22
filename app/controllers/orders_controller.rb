@@ -3,6 +3,26 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   protect_from_forgery :except => [:new ,:create]
 
+
+  def choice
+    ログイン済み、
+    
+    両方登録なし
+    受注者として登録したい
+    発注者として登録したい
+
+    発注者のみ登録
+    発注したい
+    受注者になりたい
+    受注者のみ登録
+    発注者になりたい
+    受注者として作業をしたい
+    両方登録済み
+    
+    受注者登録済み
+
+  end
+  
   # GET /orders
   # GET /orders.json
   def index

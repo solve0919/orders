@@ -1,12 +1,15 @@
 class ContractorsController < ApplicationController
   before_action :set_contractor, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
+  before_action :ensure_correct_user, only: [:new, :edit, :update, :destroy,]
   protect_from_forgery :except => [:new ,:create]
+  
 
   # GET /contractors
   # GET /contractors.json
   def index
     @contractors = Contractor.all
+    @contractor = Contractor.find_by(user_id: current_user)
   end
 
   # GET /contractors/1
@@ -17,8 +20,6 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
-    @contractor.user = current_user
-    @contractor.save
   end
 
   # GET /contractors/1/edit
@@ -29,7 +30,8 @@ class ContractorsController < ApplicationController
   # POST /contractors.json
   def create
     @contractor = Contractor.new(contractor_params)
-
+    @contractor.user = current_user
+    @contractor.save
     respond_to do |format|
       if @contractor.save
         format.html { redirect_to @contractor, notice: 'Contractor was successfully created.' }
@@ -76,6 +78,14 @@ class ContractorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
       params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
+    end
 
+    def ensure_correct_user
+      @contractor = Contractor.find_by(user_id: current_user)
+      if current_user != @contractor.user
+        flash[:notice] = "権限がありません"
+        redirect_to("/contractors")
+      else
+      end
     end
 end
