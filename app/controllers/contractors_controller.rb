@@ -1,7 +1,7 @@
 class ContractorsController < ApplicationController
-  before_action :set_contractor, only: [:show, :edit, :update, :destroy]
+  before_action :set_contractor, {only: [:show, :edit, :update, :destroy]}
   before_action :authenticate_user! 
-  before_action :ensure_correct_user, only: [:new, :edit, :update, :destroy,]
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
   protect_from_forgery :except => [:new ,:create]
   
 
@@ -12,7 +12,7 @@ class ContractorsController < ApplicationController
     @contractor = Contractor.find_by(user_id: current_user)
   end
 
-  # GET /contractors/1
+  # GET /contracto  rs/1
   # GET /contractors/1.json
   def show
   end
@@ -81,8 +81,8 @@ class ContractorsController < ApplicationController
     end
 
     def ensure_correct_user
-      @contractor = Contractor.find_by(user_id: current_user)
-      if current_user != @contractor.user
+      @contractor = Contractor.find_by(id: params[:id])
+      if current_user.id != @contractor.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/contractors")
       else

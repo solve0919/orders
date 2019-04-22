@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= link_to("発注者になる","orders/new") %></p>
-<% if  Contractor.exists?(user_id: current_user) then  %>
-<p><%= link_to("受注者情報を変更する", "contractors/#{@contractor.id}") %></p>
+<% if  Order.exists?(user_id: current_user) then  %>
+<p><%= link_to("受注者情報を変更する", "/orders/1/edit") %></p>
 <% else %>
-<p><%= link_to('受注者になる', new_contractor_path) %></p>
+<p><%= link_to("発注者になる","orders/new") %></p>
+<% end %>
+
+<% if  Contractor.exists?(user_id: current_user) then  %>
+<p><%= link_to("受注者情報を変更する", "/contractors/#{@contractor.id}/edit") %></p>
+<% else %>
+<p><%= link_to('受注者になる(情報登録)', new_contractor_path) %></p>
 <% end %>
 <h1>受注者リスト</h1>
 
@@ -18,7 +23,7 @@
       <th>Prefectures</th>
       <th>Phone number</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -37,6 +42,9 @@
         <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
         <td><%= link_to 'Destroy', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
+        <% end %>
+        <% if Order.exists?(user_id: current_user)  %>
+        <td>注文する</td>
         <% end %>
       </tr>
     <% end %>

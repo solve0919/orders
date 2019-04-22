@@ -34,7 +34,13 @@
   <strong>Description:</strong>
   <%= @contractor.description %>
 </p>
-<% if current_user.id == @contractor.user_id then  %>
-<%= link_to 'Edit', edit_contractor_path(@contractor) %> |
+
+
+<% if Order.exists?(user_id: current_user)  %>
+  <p>注文する</p>
 <% end %>
+<% if current_user.id == @contractor.user_id then  %>
+  <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
+<% end %>
+
 <%= link_to 'Back', contractors_path %>
