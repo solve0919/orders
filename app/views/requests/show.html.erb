@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @request.order_id %>
+</p>
+
+<p>
+  <strong>Contractor:</strong>
+  <%= @request.contractor_id %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @request.money %>
+</p>
+
+<p>
+  <strong>Delivery:</strong>
+  <%= @request.delivery %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @request.quantity %>
+</p>
+
+<p>
+  <strong>Hope:</strong>
+  <%= @request.hope %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @request.note %>
+</p>
+
+<p>
+  <strong>Receive:</strong>
+  <%= @request.receive %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @request.adress %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @request.payment %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request.status %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

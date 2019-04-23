@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 1
+  contractor_id: 1
+  money: 1
+  delivery: MyString
+  quantity: MyString
+  hope: MyText
+  note: MyText
+  receive: MyString
+  adress: MyString
+  payment: MyString
+  status: 1
+
+two:
+  order_id: 1
+  contractor_id: 1
+  money: 1
+  delivery: MyString
+  quantity: MyString
+  hope: MyText
+  note: MyText
+  receive: MyString
+  adress: MyString
+  payment: MyString
+  status: 1

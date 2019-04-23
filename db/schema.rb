@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_232111) do
+ActiveRecord::Schema.define(version: 2019_04_23_063127) do
 
   create_table "confrectors", force: :cascade do |t|
     t.integer "user_id"
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(version: 2019_04_20_232111) do
     t.string "phone_number"
     t.string "email"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "contractor_id"
+    t.integer "money"
+    t.string "delivery"
+    t.string "quantity"
+    t.text "hope"
+    t.text "note"
+    t.string "receive"
+    t.string "adress"
+    t.string "payment"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

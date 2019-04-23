@@ -1,0 +1,72 @@
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= form.number_field :order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contractor_id %>
+    <%= form.number_field :contractor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :money %>
+    <%= form.number_field :money %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery %>
+    <%= form.text_field :delivery %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hope %>
+    <%= form.text_area :hope %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receive %>
+    <%= form.text_field :receive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :adress %>
+    <%= form.text_field :adress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment %>
+    <%= form.text_field :payment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

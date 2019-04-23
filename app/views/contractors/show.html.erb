@@ -36,7 +36,7 @@
 </p>
 
 <% if Order.exists?(user_id: current_user)  %>
-  <p>注文する</p>
+  <p><%= link_to("注文する",controller: "requests", action: "new"  ,  id: @contractor.id)%></p>
 <% end %>
 <% if current_user.id == @contractor.user_id then  %>
   <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
