@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.save
     respond_to do |format|
-      if @order.save
+      if @order.save  
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

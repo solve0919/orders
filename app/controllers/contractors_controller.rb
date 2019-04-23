@@ -1,6 +1,5 @@
 class ContractorsController < ApplicationController
   before_action :set_contractor, {only: [:show, :edit, :update, :destroy]}
-  
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
   protect_from_forgery :except => [:new ,:create]
   
@@ -10,6 +9,7 @@ class ContractorsController < ApplicationController
   def index
     @contractors = Contractor.all
     @contractor = Contractor.find_by(user_id: current_user)
+    @order = Order.find_by(user_id: current_user)
   end
 
   # GET /contracto  rs/1
