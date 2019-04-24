@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 <p><%= link_to("発注者一覧", "/orders") %></p>
 <% if  Order.exists?(user_id: current_user) then  %>
-<p><%= link_to("発注者情報を変更する", "/orders/#{@order.id}/edit") %></p>
+  <p><%= link_to("発注者情報を変更する", "/orders/#{@order.id}/edit") %></p>
 <% else %>
-<p><%= link_to("発注者になる","orders/new") %></p>
+  <p><%= link_to("発注者になる","orders/new") %></p>
 <% end %>
-
 
 <% if  Contractor.exists?(user_id: current_user) then  %>
-<p><%= link_to("受注者情報を変更する", "/contractors/#{@contractor.id}/edit") %></p>
+  <p><%= link_to("受注者情報を変更する", "/contractors/#{@contractor.id}/edit") %></p>
 <% else %>
-<p><%= link_to('受注者になる(情報登録)', new_contractor_path) %></p>
+  <p><%= link_to('受注者になる(情報登録)', new_contractor_path) %></p>
 <% end %>
 <%= link_to('発注状況へ', "/requests")%>
-
 
 <h1>受注者リスト</h1>
 
