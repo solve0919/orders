@@ -12,17 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_04_23_063127) do
 
-  create_table "confrectors", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.string "adress"
-    t.date "birthday"
-    t.string "prefectures"
-    t.string "phone_number"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "contractors", force: :cascade do |t|
     t.integer "user_id"

@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <h1>original order</h1>
+  <br>
+
+  <% if current_user != nil %>
+    <%= link_to("ログアウト", "/logout")%>
+  <% end %>
     <%= yield %>
   </body>
 </html>
