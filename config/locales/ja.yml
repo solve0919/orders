@@ -1,0 +1,10 @@
+ja:
+  enums:
+    request:
+      status:
+        requests: '依頼'
+        consultation: '相談中'
+        orders: '受注(内容、金額確定)'
+        work: '製作中'
+        shipping: '発送中'
+        completion: '到着'
