@@ -63,7 +63,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.select :status, Request.statuses.keys.to_a,{} %>
+    <%= @request.status %>
   </div>
 
   <div class="actions">

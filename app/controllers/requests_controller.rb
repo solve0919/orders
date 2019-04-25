@@ -20,6 +20,7 @@ class RequestsController < ApplicationController
     @request = Request.new
     @request.contractor_id = params[:id]  #contractor_IDを挿入
     @contractor = Contractor.find(params[:id]) #
+    
   end
 
   # GET /requests/1/edit
@@ -31,6 +32,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.order_id = Order.find_by(user_id: current_user).id
+    @request.status = 0 #ステータスを確定
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
@@ -68,13 +70,31 @@ class RequestsController < ApplicationController
 
   private
     def ensure_correct_user
-      @order = Order.find(@request.order_id)
-      @contractor = Contractor.find(@request.contractor_id)
-    if current_user.id != @contractor.user_id || current_user.id != @order.user_id
-      flash[:notice] = "権限がありません"
-      redirect_to("/requests")
+      @order = Order.find_by(user_id: current_user)
+      @contractor = Contractor.find_by(user_id: current_user)
+
+      if  @contractor == nil && @order == nil
+        flash[:notice] = "権限がありません"
+        redirect_to("/requests")
+      else
+        if @order == nil
+          if @request.contractor_id != @contractor.id
+            flash[:notice] = "権限がありません"
+            redirect_to("/requests")
+          end
+        end
+        if @contractor == nil
+          if@request.order_id != @order.id
+            flash[:notice] = "権限がありません"
+            redirect_to("/requests")
+          end
+        end
+      end
+        # if @request.contractor_id != @contractor.id ||  @request.order_id != @order.id
+        #   flash[:notice] = "権限がありません"
+        #   redirect_to("/requests")
+        # end
     end
-  end
     # Use callbacks to share common setup or constraints between actions.
     def set_request
       @request = Request.find(params[:id])
