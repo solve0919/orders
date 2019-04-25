@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <%= link_to("受注者一覧へ", "/contractors") %>
-<h1>注文情報</h1>
+<h1>注文状況</h1>
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   <table>
     <thead>
@@ -19,7 +19,8 @@
         <th colspan="3"></th>
       </tr>
     </thead>
-<h2>発注中案件</h2>
+    <h2>発注中案件</h2>
+  <% if @order != nil  %>
     <tbody>
       <% @requests.each do |request| %>
         <%# オーダー %>
@@ -62,8 +63,11 @@
         <th colspan="3"></th>
       </tr>
     </thead>
+  <% end %>
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-<h2>受注案件</h2>
+  
+  <h2>受注案件</h2>
+  <% if @contractor != nil %>
     <tbody>
       <% @requests.each do |request| %>
         <%# オーダー %>
@@ -88,4 +92,4 @@
       <% end %>
     </tbody>
   </table>
-
+<% end %>

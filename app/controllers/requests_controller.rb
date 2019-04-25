@@ -1,13 +1,13 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user , only: [:edit ,:update, :destroy]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy]
 
   # GET /requests
   # GET /requests.json
   def index
     @requests = Request.all
-    @order = Order.find_by(user_id: current_user)
     @contractor = Contractor.find_by(user_id: current_user)
+    @order = Order.find_by(user_id: current_user) 
   end
 
   # GET /requests/1

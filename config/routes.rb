@@ -13,8 +13,9 @@ devise_scope :user do
   get "signup", :to => "users/registrations#new"
   get "login", :to => "users/sessions#new"
   get "logout", :to => "users/sessions#destroy"
+  root "home#top"
 end
-root "home#top"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "home/top" => "home#top"
 end
