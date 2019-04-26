@@ -69,10 +69,10 @@ class RequestsController < ApplicationController
   end
 
   private
-    def ensure_correct_user
-      @order = Order.find_by(id: @request.order_id)
-      @contractor = Contractor.find_by(id: @request.contractor_id)
-      if current_user != @contractor.user_id ||  current_user != @order.user_id
+    def ensure_correct_user 
+      @order = Order.find(@request.order_id)
+      @contractor = Contractor.find(@request.contractor_id)
+      unless current_user.id == @contractor.user_id ||  current_user.id == @order.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/requests")
       end
