@@ -4,6 +4,7 @@ class ContractorsController < ApplicationController
   protect_from_forgery :except => [:new ,:create]
   
 
+
   # GET /contractors
   # GET /contractors.json
   def index

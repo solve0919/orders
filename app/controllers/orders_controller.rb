@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user , only: [:edit ,:update, :destroy]
-  protect_from_forgery :except => [:new ,:create]
-  
+  protect_from_forgery except: [:new ,:create]
+  skip_before_action :registration_user , only: [:new ,:create]
   # GET /orders
   # GET /orders.json
   def index

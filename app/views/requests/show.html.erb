@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= current_user.id %>
-<%= @order.user_id %>
-<%= @contractor.user_id%>
+<%= @request.contractor.name %>
+
 <p>
   <strong>Order:</strong>
   <%= @request.order_id %>
