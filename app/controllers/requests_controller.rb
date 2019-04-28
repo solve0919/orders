@@ -73,7 +73,7 @@ class RequestsController < ApplicationController
       @order = @request.order
       @contractor = @request.contractor
       unless current_user.id == @contractor.user_id ||  current_user.id == @order.user_id
-        flash[:notice] = "権限がありません"
+        flash[:notice] = '権限がありません'
         redirect_to("/requests")
       end
     end

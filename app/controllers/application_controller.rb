@@ -18,8 +18,7 @@ class ApplicationController < ActionController::Base
   
   def registration_user
     @order = current_user.order
-    if @order
-    else
+    unless @order
       flash[:notice] = "発注者登録をお願いします。"
       redirect_to("/orders/new")
     end
