@@ -20,7 +20,6 @@ class RequestsController < ApplicationController
     @request = Request.new
     @request.contractor_id = params[:id]  #contractor_IDを挿入
     @contractor = Contractor.find(params[:id]) #
-    
   end
 
   # GET /requests/1/edit
@@ -72,9 +71,9 @@ class RequestsController < ApplicationController
     def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
-      unless current_user.id == @contractor.user_id ||  current_user.id == @order.user_id
+      unless @request.can_access?
         flash[:notice] = '権限がありません'
-        redirect_to("/requests")
+        redirect_to('/requests')
       end
     end
     # Use callbacks to share common setup or constraints between actions.
