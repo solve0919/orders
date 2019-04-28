@@ -1,4 +1,4 @@
 class Contractor < ApplicationRecord
   belongs_to :user
-  has_many :contractor
+  has_many :requests
 end

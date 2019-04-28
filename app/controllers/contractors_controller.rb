@@ -4,11 +4,12 @@ class ContractorsController < ApplicationController
   protect_from_forgery :except => [:new ,:create]
   
 
+
   # GET /contractors
   # GET /contractors.json
   def index
     @contractors = Contractor.all
-    @contractor = Contractor.find_by(user_id: current_user)
+    @contractor = current_user.contractor
     @order = Order.find_by(user_id: current_user)
   end
 

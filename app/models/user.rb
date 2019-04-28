@@ -5,5 +5,5 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   has_one :contractor ,dependent: :destroy
-  has_many :orders ,dependent: :destroy
+  has_one :order ,dependent: :destroy
 end
