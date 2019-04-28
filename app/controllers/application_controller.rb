@@ -1,12 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_current_user
+  helper_method :current_user, :user_signed_in?
   before_action :authenticate_user! , except: [:top]
-  before_action :registration_user , except: ["/logout"]
-
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id])
-  end
+  before_action :registration_user
 
   # このアクションを追加
   def after_sign_in_path_for(resource)
@@ -21,8 +17,9 @@ class ApplicationController < ActionController::Base
   end 
   
   def registration_user
-    @order = Order.find_by(user_id: current_user)
-    if @order == nil
+    @order = current_user.order
+    if @order
+    else
       flash[:notice] = "発注者登録をお願いします。"
       redirect_to("/orders/new")
     end

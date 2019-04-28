@@ -6,8 +6,8 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     @requests = Request.all
-    @contractor = Contractor.find_by(user_id: current_user)
-    @order = Order.find_by(user_id: current_user) 
+    @contractor = current_user.contractor
+    @order = current_user.order
   end
 
   # GET /requests/1
@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
-    @request.order_id = Order.find_by(user_id: current_user).id
+    @request.order_id = current_user.order.id
     @request.status = 0 #ステータスを確定
     respond_to do |format|
       if @request.save
