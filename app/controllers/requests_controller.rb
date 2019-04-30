@@ -13,6 +13,10 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @count = @request.status.to_i
+    @count = @count + 1
+    @request.status = @count
+    @request.save
   end
 
   # GET /requests/new
@@ -31,7 +35,8 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.order_id = current_user.order.id
-    @request.status = 0 #ステータスを確定
+    @count = 0
+    @request.status = @count #ステータスを確定
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
@@ -71,12 +76,11 @@ class RequestsController < ApplicationController
     def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
-      user = current_user
-      unless @request.can_access?(user)
+      
+      unless @request.can_access?(current_user)
         flash[:notice] = '権限がありません'
         redirect_to('/requests')
       end
-      
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_request
