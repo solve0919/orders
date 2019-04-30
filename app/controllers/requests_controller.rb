@@ -76,7 +76,8 @@ class RequestsController < ApplicationController
     def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
-      unless @request.can_access?(user)
+      
+      unless @request.can_access?(user = current_user)
         flash[:notice] = '権限がありません'
         redirect_to('/requests')
       end
