@@ -14,6 +14,14 @@ Rails.application.routes.draw do
     get "logout", :to => "users/sessions#destroy"
   end
   root "home#top"
-  post"show" => "requests#show"
+  resources :requests do
+    member do
+      get "/count", to: "requests#count"
+      post "/count", to: "requests#count"
+    end
+  end
+  
+  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

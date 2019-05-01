@@ -54,11 +54,14 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @request.status_i18n %>
+  <%= @request.status %>
 </p>
 
 <p>
-<%= link_to "受注する", request_path , class: 'btn btn-default' %>
+
+<% if @request.status.to_i == 0 %>
+<%= link_to "受注する", count_request_path , class: 'btn btn-default' %>
+<% end %>
 </p>
 
 <%= link_to '変更', edit_request_path(@request) %> |

@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy ,:count]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy,:count]
 
   # GET /requests
   # GET /requests.json
@@ -13,10 +13,13 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
-    @count = @request.status.to_i
+  end
+
+  def count
+    @count = @request.class.statuses[@request.status]
     @count = @count + 1
-    @request.status = @count
     @request.save
+    redirect_to('requests/:id')
   end
 
   # GET /requests/new
@@ -35,8 +38,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.order_id = current_user.order.id
-    @count = 0
-    @request.status = @count #ステータスを確定
+    @request.status = 0 #ステータスを確定
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
