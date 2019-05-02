@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @request.contractor_id = params[:id]  #contractor_IDを挿入
-    @contractor = Contractor.find(params[:id]) #
+    @contractor = @request.contractor #
   end
 
   # GET /requests/1/edit
@@ -79,7 +79,6 @@ class RequestsController < ApplicationController
     def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
-      
       unless @request.can_access?(current_user)
         flash[:notice] = '権限がありません'
         redirect_to('/requests')
