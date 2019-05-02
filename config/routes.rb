@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   root "home#top"
   resources :requests do
     member do
-      get "/count", to: "requests#count"
-      post "/count", to: "requests#count"
+      get "count", to: "requests#count"
+      post "count", to: "requests#count"
     end
   end
   

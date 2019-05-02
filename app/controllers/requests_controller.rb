@@ -18,8 +18,9 @@ class RequestsController < ApplicationController
   def count
     @count = @request.class.statuses[@request.status]
     @count = @count + 1
+    @request.status = @count
     @request.save
-    redirect_to('requests/:id')
+    redirect_to request_path
   end
 
   # GET /requests/new
