@@ -10,7 +10,7 @@ class ContractorsController < ApplicationController
   def index
     @contractors = Contractor.all
     @contractor = current_user.contractor
-    @order = Order.find_by(user_id: current_user)
+    @order = current_user.order
   end
 
   # GET /contracto  rs/1

@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy ,:count]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy,:count]
 
   # GET /requests
   # GET /requests.json
@@ -15,12 +15,19 @@ class RequestsController < ApplicationController
   def show
   end
 
+  def count
+    @count = @request.class.statuses[@request.status]
+    @count = @count + 1
+    @request.status = @count
+    @request.save
+    redirect_to request_path
+  end
+
   # GET /requests/new
   def new
     @request = Request.new
     @request.contractor_id = params[:id]  #contractor_IDを挿入
-    @contractor = Contractor.find(params[:id]) #
-    
+    @contractor = @request.contractor #
   end
 
   # GET /requests/1/edit
@@ -72,9 +79,9 @@ class RequestsController < ApplicationController
     def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
-      unless current_user.id == @contractor.user_id ||  current_user.id == @order.user_id
+      unless @request.can_access?(current_user)
         flash[:notice] = '権限がありません'
-        redirect_to("/requests")
+        redirect_to('/requests')
       end
     end
     # Use callbacks to share common setup or constraints between actions.
