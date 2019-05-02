@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    @order.email = @order.user.email
     @order.save
     respond_to do |format|
       if @order.save  
