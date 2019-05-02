@@ -80,7 +80,7 @@ class RequestsController < ApplicationController
       @order = @request.order
       @contractor = @request.contractor
       
-      unless @request.can_access?(user = current_user)
+      unless @request.can_access?(current_user)
         flash[:notice] = '権限がありません'
         redirect_to('/requests')
       end
