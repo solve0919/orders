@@ -58,7 +58,6 @@
 </p>
 
 <p>
-
 <% if @request.class.statuses[@request.status] == 0 && current_user.id == @request.contractor.user_id %>
 <%= link_to "受注する", count_request_path , class: 'btn btn-default' %>
 <% end %>

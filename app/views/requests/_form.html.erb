@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= form.label :delivery %>
-    <%= form.text_field :delivery %>
+    <%= form.select :delivery , ['日本郵便','ヤマト運輸','佐川急便'] %>
   </div>
 
   <div class="field">
@@ -47,7 +47,7 @@
 
   <div class="field">
     <%= form.label :receive %>
-    <%= form.text_field :receive %>
+    <%= form.select :receive, ['取りに行く','送付'] %>
   </div>
 
   <div class="field">
@@ -57,7 +57,7 @@
 
   <div class="field">
     <%= form.label :payment %>
-    <%= form.text_field :payment %>
+    <%= form.select :payment , ['カード払い','銀行振込','LINE Pay','Paypay'] %>
   </div>
 
   <div class="field">
