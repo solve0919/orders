@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     @count = @request.class.statuses[@request.status]
     @count = @count + 1
     @request.status = @count
-    @request.save
+    @request.save!
     redirect_to request_path
   end
 
