@@ -1,7 +1,7 @@
 class CreateRequests < ActiveRecord::Migration[5.2]
   def change
     create_table :requests do |t|
-      t.integer :order_id
+      t.integer :order, foreign_key: true
       t.integer :contractor_id
       t.integer :money
       t.string :delivery
