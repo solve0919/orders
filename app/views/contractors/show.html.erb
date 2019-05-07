@@ -35,7 +35,7 @@
   <%= @contractor.description %>
 </p>
 
-<% if current_user.id == @contractor.user.id %>
+<% if @contractor.login_user?(current_user)  %>
   <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
 <% else %>
   <p><%= link_to("注文する",controller: "requests", action: "new"  ,  id: @contractor.id)%></p>

@@ -32,7 +32,7 @@ class ContractorsController < ApplicationController
   def create
     @contractor = Contractor.new(contractor_params)
     @contractor.user = current_user
-    @contractor.name = Order.find_by(user_id: current_user.id).name #orderから名前を引っ張ってくる
+    @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
     respond_to do |format|
       if @contractor.save

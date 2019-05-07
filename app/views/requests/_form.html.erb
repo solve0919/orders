@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= form.label :delivery %>
-    <%= form.select :delivery , ['日本郵便','ヤマト運輸','佐川急便'] %>
+    <%= form.select :delivery ,Request.deliveries.keys.map {|k| [Request.deliveries_i18n[k], k]} %>
   </div>
 
   <div class="field">
