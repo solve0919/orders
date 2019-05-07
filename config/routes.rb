@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :requests
   resources :contractors
   resources :orders
+  resources :images
 
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',
