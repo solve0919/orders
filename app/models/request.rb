@@ -6,4 +6,22 @@ class Request < ApplicationRecord
   def can_access?(user)
     user.id == self.contractor.user_id ||  user.id == self.order.user_id
   end
+# enumの進行
+  def case_status!
+    case status 
+    when request?
+      consultation!
+    when consultation?
+      orders!
+    when orders?
+      work!
+    when work?
+      shipping!
+    when shipping?
+      completion!
+    when completion?
+      completion!
+    end
+  end
+
 end

@@ -64,6 +64,7 @@
   <div class="field">
     <%= form.label :status %>
     <%= @request.status_i18n %>
+    <%= link_to @request.status, case_status_request_path(@request), method: :patch %>
   </div>
 
   <div class="actions">

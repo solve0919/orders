@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :requests
   resources :contractors
   resources :orders
+  
 
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',
@@ -16,12 +17,10 @@ Rails.application.routes.draw do
   root "home#top"
   resources :requests do
     member do
+      patch :case_status
       get "count", to: "requests#count"
       post "count", to: "requests#count"
     end
   end
-  
-  
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
