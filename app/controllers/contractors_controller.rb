@@ -21,6 +21,8 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
+    @image = Image.new(create_params)
+    3.times { @prototype.thumbnails.build }
   end
 
   # GET /contractors/1/edit
@@ -70,7 +72,10 @@ class ContractorsController < ApplicationController
 
   private
 
-
+    def create_params
+      params.require(:image).permit(Images_attributes: [:image])
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_contractor
       @contractor = Contractor.find(params[:id])

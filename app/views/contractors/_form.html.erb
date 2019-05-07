@@ -46,6 +46,12 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <% form.fields_for :imaegs do |img| %>
+      <%= img.file_field :image %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
