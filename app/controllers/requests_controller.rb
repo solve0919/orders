@@ -18,7 +18,22 @@ class RequestsController < ApplicationController
   end
 
   def case_status
-    @request.case_status!
+    p @request.status 
+    case @request.status 
+      when 'request'
+        @request.status  = 'consultation'
+      when 'consultation'
+        @request.status  = 'orders'
+      when 'orders'
+        @request.status  = 'work'
+      when 'work'
+        @request.status  = 'shipping'
+      when 'shipping'
+        @request.status  = 'completion'
+      when 'completion'
+        @request.status  = 'completion'
+    end
+    @request.save
     redirect_to request_path
   end
 
