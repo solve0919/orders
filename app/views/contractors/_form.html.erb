@@ -47,8 +47,8 @@
   </div>
 
   <div class="field">
-    <% form.fields_for :imaegs do |img| %>
-      <%= img.file_field :image %>
+    <%= form.fields_for :images do |i| %>
+      <%= i.file_field :image %>
     <% end %>
   </div>
 

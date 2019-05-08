@@ -21,8 +21,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
-    @image = Image.new(create_params)
-    3.times { @prototype.thumbnails.build }
+    3.times { @contractor.images.build }
   end
 
   # GET /contractors/1/edit
@@ -72,10 +71,6 @@ class ContractorsController < ApplicationController
 
   private
 
-    def create_params
-      params.require(:image).permit(Images_attributes: [:image])
-    end
-    
     # Use callbacks to share common setup or constraints between actions.
     def set_contractor
       @contractor = Contractor.find(params[:id])
@@ -83,7 +78,7 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description ,img_attributes: [:image ,:contractor_id])
     end
 
     def ensure_correct_user
