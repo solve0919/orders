@@ -1,6 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:count]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy,:count]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:count]
 
   # GET /requests
   # GET /requests.json
@@ -77,16 +76,13 @@ class RequestsController < ApplicationController
 
   private
     def ensure_correct_user 
+      @request = Request.find(params[:id])
       @order = @request.order
       @contractor = @request.contractor
       unless @request.can_access?(current_user)
         flash[:notice] = '権限がありません'
         redirect_to('/requests')
       end
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_request
-      @request = Request.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
