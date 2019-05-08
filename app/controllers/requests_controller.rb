@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:count ,:case_status]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy,:count]
+  before_action :set_request, only: [:show, :edit, :update, :destroy ,:case_status]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status ]
   
 
 
@@ -18,7 +18,6 @@ class RequestsController < ApplicationController
   end
 
   def case_status
-    p @request.status 
     case @request.status 
       when 'request'
         @request.status  = 'consultation'
@@ -37,14 +36,6 @@ class RequestsController < ApplicationController
     redirect_to request_path
   end
 
-
-  def count
-    @count = @request.class.statuses[@request.status]
-    @count = @count + 1
-    @request.status = @count
-    @request.save
-    redirect_to request_path
-  end
 
   # GET /requests/new
   def new
