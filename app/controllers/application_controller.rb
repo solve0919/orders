@@ -23,4 +23,6 @@ class ApplicationController < ActionController::Base
       redirect_to("/orders/new")
     end
   end
+
+  
 end

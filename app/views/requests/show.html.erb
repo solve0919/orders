@@ -58,7 +58,7 @@
 </p>
 
 <p>
-<% if @request.request? && myself?(current_user) %>
+<% if @request.request? && @request.contractor.myself?(current_user) #@request.request? && current_user.id == @request.contractor.user_id %> 
 <%= link_to "受注する", count_request_path , class: 'btn btn-default' %>
 <% end %>
 </p>
