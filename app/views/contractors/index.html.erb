@@ -41,11 +41,8 @@
         <td><%= contractor.description %></td>
         <td><%= link_to '企業情報確認', contractor %></td>
         <% if current_user.id == contractor.user_id then  %>
-        <td><%= link_to '編集', edit_contractor_path(contractor) %></td>
-        <td><%= link_to '消去', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-        <% end %>
-        <% if Order.exists?(user_id: current_user)  %>
+          <td><%= link_to '編集', edit_contractor_path(contractor) %></td>
+          <td><%= link_to '消去', contractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
