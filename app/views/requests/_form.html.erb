@@ -11,14 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :order_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :contractor_id %>
+
     <%= form.hidden_field :contractor_id %>
-  </div>
 
   <div class="field">
     <%= form.label :money %>
@@ -27,7 +22,7 @@
 
   <div class="field">
     <%= form.label :delivery %>
-    <%= form.select :delivery ,Request.deliveries.keys.map {|k| [Request.deliveries_i18n[k], k]} %>
+    <%= form.select :delivery ,Request.deliveries_i18n.invert %>
   </div>
 
   <div class="field">
