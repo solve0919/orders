@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   resources :requests
   resources :contractors
   resources :orders
-
+  
   devise_for :users, :controllers => {
-  :registrations => 'users/registrations',
-  :sessions => 'users/sessions'   
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'   
   } 
 
   devise_scope :user do
@@ -14,14 +14,11 @@ Rails.application.routes.draw do
     get "logout", :to => "users/sessions#destroy"
   end
   root "home#top"
+  
   resources :requests do
     member do
-      get "count", to: "requests#count"
-      post "count", to: "requests#count"
+      patch :case_status
     end
   end
-  
-  
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

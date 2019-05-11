@@ -1,6 +1,8 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:count]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy,:count]
+  before_action :set_request, only: [:show, :edit, :update, :destroy ,:case_status]
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status ]
+  
+
 
   # GET /requests
   # GET /requests.json
@@ -15,13 +17,11 @@ class RequestsController < ApplicationController
   def show
   end
 
-  def count
-    @count = @request.class.statuses[@request.status]
-    @count = @count + 1
-    @request.status = @count
-    @request.save
+  def case_status
+    @request.case_status?
     redirect_to request_path
   end
+
 
   # GET /requests/new
   def new

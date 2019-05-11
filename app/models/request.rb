@@ -6,4 +6,12 @@ class Request < ApplicationRecord
   def can_access?(user)
     user.id == self.contractor.user_id ||  user.id == self.order.user_id
   end
+
+  def case_status?
+    self.completion! if self.shipping?
+    self.shipping! if self.work?
+    self.work! if self.orders?
+    self.orders! if self.consultation?
+    self.consultation! if self.request?
+  end
 end
