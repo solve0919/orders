@@ -1,0 +1,2 @@
+class ContractorCategory < ApplicationRecord
+end
