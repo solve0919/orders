@@ -40,7 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'enum_help' 
 gem 'carrierwave'
-gem 'fog-aws'
+gem 'fog'
 
 
 group :development, :test do
