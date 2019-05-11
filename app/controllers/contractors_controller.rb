@@ -32,6 +32,7 @@ class ContractorsController < ApplicationController
   def create
     @contractor = Contractor.new(contractor_params)
     @contractor.user = current_user
+    @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
     respond_to do |format|
       if @contractor.save
@@ -82,7 +83,7 @@ class ContractorsController < ApplicationController
     end
 
     def ensure_correct_user
-      @contractor = Contractor.find_by(id: params[:id])
+      @contractor = Contractor.find(params[:id])
       if current_user.id != @contractor.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/contractors")

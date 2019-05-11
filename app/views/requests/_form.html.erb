@@ -11,15 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.number_field :order_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :contractor_id %>
-    <%= form.number_field :contractor_id %>
-  </div>
+
+    <%= form.hidden_field :contractor_id %>
 
   <div class="field">
     <%= form.label :money %>
@@ -28,7 +22,7 @@
 
   <div class="field">
     <%= form.label :delivery %>
-    <%= form.text_field :delivery %>
+    <%= form.select :delivery ,Request.deliveries_i18n.invert %>
   </div>
 
   <div class="field">
@@ -48,7 +42,7 @@
 
   <div class="field">
     <%= form.label :receive %>
-    <%= form.text_field :receive %>
+    <%= form.select :receive, ['取りに行く','送付'] %>
   </div>
 
   <div class="field">
@@ -58,7 +52,7 @@
 
   <div class="field">
     <%= form.label :payment %>
-    <%= form.text_field :payment %>
+    <%= form.select :payment , ['カード払い','銀行振込','LINE Pay','Paypay'] %>
   </div>
 
   <div class="field">
