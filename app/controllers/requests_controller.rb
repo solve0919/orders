@@ -18,13 +18,7 @@ class RequestsController < ApplicationController
   end
 
   def case_status
-    @request.completion! if @request.completion?
-    @request.completion! if @request.shipping?
-    @request.shipping! if @request.work?
-    @request.work! if @request.orders?
-    @request.orders! if @request.consultation?
-    @request.consultation! if @request.request?
-    @request.save
+    @request.case_status?
     redirect_to request_path
   end
 
