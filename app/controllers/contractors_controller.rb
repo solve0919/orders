@@ -31,6 +31,9 @@ class ContractorsController < ApplicationController
   # POST /contractors.json
   def create
     @contractor = Contractor.new(contractor_params)
+    @contractor_category = Contractor.new(contractor_params)
+    @category = Category.new(contractor_params)
+
     @contractor.user = current_user
     @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
