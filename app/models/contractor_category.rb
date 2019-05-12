@@ -1,4 +1,4 @@
 class ContractorCategory < ApplicationRecord
-  has_many :category
-  has_many :contractor
+  belongs_to :category
+  belongs_to :contractor
 end

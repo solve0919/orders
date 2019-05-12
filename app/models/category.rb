@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-  belongs_to :contractor_category
+  has_many :contractor_category
+  has_many :contractor
   enum name: {
     beer:0 ,
     alcohol:1 ,
