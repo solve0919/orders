@@ -21,6 +21,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
+    @category = @contractor.categories.build
   end
 
   # GET /contractors/1/edit
@@ -31,9 +32,10 @@ class ContractorsController < ApplicationController
   # POST /contractors.json
   def create
     @contractor = Contractor.new(contractor_params)
-    @contractor_category = Contractor.new(contractor_params)
-    @category = Category.new(contractor_params)
-
+    # @contractor_category = Contractor.new(contractor_params)
+    @category = @contractor.categories.build(category_params)
+    @category.contractor_id = @contractor.id
+    @category.save
     @contractor.user = current_user
     @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
@@ -84,6 +86,11 @@ class ContractorsController < ApplicationController
     def contractor_params
       params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
     end
+    
+    def category_params
+      params.require(:category).permit(:name , :contractor_id) 
+    end
+  
 
     def ensure_correct_user
       @contractor = Contractor.find(params[:id])

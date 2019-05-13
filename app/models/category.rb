@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :contractor_category
-  has_many :contractor
+  has_many :contractor through: :contractor_category
   enum name: {
     beer:0 ,
     alcohol:1 ,
