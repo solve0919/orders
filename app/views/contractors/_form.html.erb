@@ -44,6 +44,19 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= form.label :category %>
+  </div>
+
+  <div class="field">
+    <% cate = [ 'beers', 'foods' , 'drink'] %>
+    <% cate.each do |c| %>
+      <%= form.label c %>
+      <%= form.check_box c #ネストさせる %>
+      
+    <% end %>  
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
