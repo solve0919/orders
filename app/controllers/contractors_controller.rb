@@ -16,6 +16,7 @@ class ContractorsController < ApplicationController
   # GET /contracto  rs/1
   # GET /contractors/1.json
   def show
+    
   end
 
   # GET /contractors/new
@@ -72,9 +73,7 @@ class ContractorsController < ApplicationController
     end
   end
 
-  private
-
-
+  private 
     # Use callbacks to share common setup or constraints between actions.
     def set_contractor
       @contractor = Contractor.find(params[:id])
@@ -82,7 +81,7 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :categories_attributes => [:name, :contractor_id]))
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :categories_attributes => [:name, :contractor_id])
     end
     
     # def category_params
@@ -95,7 +94,6 @@ class ContractorsController < ApplicationController
       if current_user.id != @contractor.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/contractors")
-      else
       end
     end
 end

@@ -50,23 +50,14 @@
 
   <div class="field">
     <% cate = [ 'beers', 'foods' , 'drink'] %>
-    <% f.fields_for :categories do |category| %>
-      <% cate do |c| %>
-        <%= category.label c %>
-        <%= category.check_box c #ネストさせる %>
+    <%= form.fields_for :categories do |category| %>
+      <% cate.each do |ca| %>
+        <%= category.label ca %>
+        <%= category.check_box ca %>
       <% end %> 
     <% end %>  
   </div>
-
-
-
-  <div class="field">
-    <%= f.fields_for :app_categories do |acf| %>
-      <%= acf.label 'ジャンル' %><br>
-      <%= acf.collection_select :category_id, Category.all, :id, :name %>
-    <% end %>
-  </div>
-
+  
 
 
   <div class="actions">
