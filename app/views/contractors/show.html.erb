@@ -36,8 +36,10 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @contractor.description %>
+  <strong>category:</strong>
+  <%=  @categories.each do |cate|  %>
+    <%=  p cate.name  %>
+  <% end %>
 </p>
 
 

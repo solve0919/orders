@@ -53,7 +53,7 @@
     <%= form.fields_for :categories do |category| %>
       <% cate.each do |ca| %>
         <%= category.label ca %>
-        <%= category.check_box ca %>
+        <%= category.check_box :name %>
       <% end %> 
     <% end %>  
   </div>

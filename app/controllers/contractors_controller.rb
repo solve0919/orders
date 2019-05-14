@@ -1,6 +1,5 @@
 class ContractorsController < ApplicationController
-  before_action :set_contractor, {only: [:show, :edit, :update, :destroy]}
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
+  before_action :ensure_correct_user, {only: [:show, :edit, :update, :destroy,]}
   protect_from_forgery :except => [:new ,:create]
   
 
@@ -16,7 +15,7 @@ class ContractorsController < ApplicationController
   # GET /contracto  rs/1
   # GET /contractors/1.json
   def show
-    
+    @categories = Category.all
   end
 
   # GET /contractors/new
@@ -74,10 +73,6 @@ class ContractorsController < ApplicationController
   end
 
   private 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contractor
-      @contractor = Contractor.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
