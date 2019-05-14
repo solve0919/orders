@@ -33,9 +33,7 @@ class ContractorsController < ApplicationController
   def create
     @contractor = Contractor.new(contractor_params)
     # @contractor_category = Contractor.new(contractor_params)
-    @category = @contractor.categories.build(category_params)
     @category.contractor_id = @contractor.id
-    @category.save
     @contractor.user = current_user
     @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
@@ -84,12 +82,12 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :categories_attributes => [:name, :contractor_id]))
     end
     
-    def category_params
-      params.require(:category).permit(:name , :contractor_id) 
-    end
+    # def category_params
+    #   params.require(:category).permit(:name , :contractor_id) 
+    # end
   
 
     def ensure_correct_user
