@@ -32,8 +32,6 @@ class ContractorsController < ApplicationController
   # POST /contractors.json
   def create
     @contractor = Contractor.new(contractor_params)
-    # @contractor_category = Contractor.new(contractor_params)
-    @category.contractor_id = @contractor.id
     @contractor.user = current_user
     @contractor.name = current_user.order.name #orderから名前を引っ張ってくる
     @contractor.save
@@ -76,7 +74,7 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, {kinds: => []})
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
     #  ,:categories_attributes => [:name, :contractor_id]
     end
     
@@ -94,5 +92,5 @@ class ContractorsController < ApplicationController
         redirect_to("/contractors")
       end
     end
-  end
+  
 end

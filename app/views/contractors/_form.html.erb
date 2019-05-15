@@ -47,7 +47,7 @@
   <div class="field">
     <%= form.label :category %>
     <% cate = [ 'beers', 'foods' , 'drink'] %>
-    <%= form.collection_check_boxes(:kinds , Category.all , :id, :name ) do |b| %>
+    <%= form.collection_check_boxes(:category_ids , Category.all , :id, :name ) do |b| %>
       <%= b.label { b.check_box + b.text }  %>  
     <% end %> 
 
