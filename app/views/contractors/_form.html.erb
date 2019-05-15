@@ -50,12 +50,14 @@
 
   <div class="field">
     <% cate = [ 'beers', 'foods' , 'drink'] %>
-    <%= form.fields_for :categories do |category| %>
+    
       <% cate.each do |ca| %>
-        <%= category.label ca %>
-        <%= category.check_box ca ,:name %>
+    <%= form.collection_check_boxes(:kinds , ca , :id, :name ) do |b| %>
+    <%= b.label { b.check_box + b.text }  %>  
       <% end %> 
     <% end %>  
+
+    
   </div>
   
 

@@ -21,7 +21,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
-    @category = @contractor.categories.build
+    # @category = @contractor.contractor_categories.build
   end
 
   # GET /contractors/1/edit
@@ -76,9 +76,12 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :categories_attributes => [:name, :contractor_id])
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, kinds: [])
+    #  ,:categories_attributes => [:name, :contractor_id]
     end
     
+
+
     # def category_params
     #   params.require(:category).permit(:name , :contractor_id) 
     # end
