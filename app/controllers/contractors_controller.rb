@@ -76,7 +76,7 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, kinds: [])
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, {kinds: => []})
     #  ,:categories_attributes => [:name, :contractor_id]
     end
     
@@ -94,4 +94,5 @@ class ContractorsController < ApplicationController
         redirect_to("/contractors")
       end
     end
+  end
 end
