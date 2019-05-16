@@ -1,7 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:case_status]
-  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status ]
-  
+  before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status]  
 
 
   # GET /requests

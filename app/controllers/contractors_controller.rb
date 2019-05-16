@@ -1,5 +1,5 @@
 class ContractorsController < ApplicationController
-  before_action :ensure_correct_user, {only: [:show, :edit, :update, :destroy,]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
   protect_from_forgery :except => [:new ,:create]
   
 
@@ -15,6 +15,7 @@ class ContractorsController < ApplicationController
   # GET /contracto  rs/1
   # GET /contractors/1.json
   def show
+    @contractor = Contractor.find(params[:id])
     @categories = Category.all
   end
 
