@@ -35,16 +35,10 @@
   <%= @contractor.description %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @contractor.images.image %>
-</p>
-
-<% if Order.exists?(user_id: current_user)  %>
-  <p><%= link_to("注文する",controller: "requests", action: "new"  ,  id: @contractor.id)%></p>
-<% end %>
-<% if current_user.id == @contractor.user_id then  %>
+<% if @contractor.myself?(current_user)  %>
   <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
+<% else %>
+  <p><%= link_to("注文する",controller: "requests", action: "new"  ,  id: @contractor.id)%></p>
 <% end %>
 
 <%= link_to 'Back', contractors_path %>
