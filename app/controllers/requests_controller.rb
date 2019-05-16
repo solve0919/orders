@@ -17,6 +17,7 @@ class RequestsController < ApplicationController
   end
 
   def case_status
+      
     if @request.consultation?
       case @request.judge
         when 0
@@ -30,6 +31,7 @@ class RequestsController < ApplicationController
       end
     end
     @request.case_status?
+
     redirect_to request_path
   end
 
@@ -49,6 +51,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+    @request.judge = 0
     @request.order_id = current_user.order.id
     @request.status = 0 #ステータスを確定
     respond_to do |format|
