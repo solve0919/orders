@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_101432) do
+ActiveRecord::Schema.define(version: 2019_05_16_065748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "contractor_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contractor_categories", force: :cascade do |t|
+    t.integer "contractor_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contractors", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_101432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.integer "category_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -66,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_101432) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "judge"
   end
 
   create_table "users", force: :cascade do |t|

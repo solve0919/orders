@@ -12,7 +12,7 @@ class Request < ApplicationRecord
     self.completion! if self.shipping?
     self.shipping! if self.work?
     self.work! if self.orders?
-    self.orders! if self.consultation?
+    
     self.consultation! if self.request?
   end
 end

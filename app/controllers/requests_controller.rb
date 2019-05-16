@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:case_status]
   before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status ]
   
 
@@ -18,6 +17,18 @@ class RequestsController < ApplicationController
   end
 
   def case_status
+    if @request.consultation?
+      case @request.judge
+        when 0
+          @request.judge = current_user.id
+        when @request.judge == current_user.id
+
+        when @request.contractor.user_id + @request.order.user_id  == @request.judge
+          @request.orders! 
+        when @request.judge != current_user.id
+          @request.judge = @request.judge + current_user.id
+      end
+    end
     @request.case_status?
     redirect_to request_path
   end
