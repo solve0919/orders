@@ -1,5 +1,5 @@
 class ContractorsController < ApplicationController
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   protect_from_forgery :except => [:new ,:create]
   
 
@@ -22,7 +22,6 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
-    # @category = @contractor.contractor_categories.build
   end
 
   # GET /contractors/1/edit
@@ -76,16 +75,8 @@ class ContractorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
       params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description ,:category_ids => [])
-    #  ,:categories_attributes => [:name, :contractor_id]
     end
     
-
-
-    # def category_params
-    #   params.require(:category).permit(:name , :contractor_id) 
-    # end
-  
-
     def ensure_correct_user
       @contractor = Contractor.find(params[:id])
       if current_user.id != @contractor.user_id
