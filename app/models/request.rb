@@ -8,10 +8,22 @@ class Request < ApplicationRecord
     user.id == self.contractor.user_id ||  user.id == self.order.user_id
   end
 
-  def case_status?
+  def case_status?(user)
     self.completion! if self.shipping?
     self.shipping! if self.work?
     self.work! if self.orders?
+
+    if self.consultation?
+      if self.order.user_id = user.id
+        self.judge_order = true
+      end
+      if self.contractor.user_id = user.id
+        self.judge_contractor = true
+      end
+      if self.judge_contractor = true && self.judge_order = true
+        self.orders!
+      end
+    end
     
     self.consultation! if self.request?
   end

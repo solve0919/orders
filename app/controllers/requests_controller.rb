@@ -17,18 +17,8 @@ class RequestsController < ApplicationController
   end
 
   def case_status
-    if @request.consultation?
-      if @request.order.user_id = current_user.id
-        @request.judge_order = true
-      end
-      if @request.contractor.user_id = current_user.id
-        @request.judge_contractor = true
-      end
-      if @request.judge_contractor = true && @request.judge_order = true
-        @request.orders!
-      end
-    end
-    @request.case_status?
+
+    @request.case_status?(current_user)
     redirect_to request_path
   end
 
