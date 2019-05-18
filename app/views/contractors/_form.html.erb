@@ -49,12 +49,8 @@
     <%= form.collection_check_boxes(:category_ids , Category.all , :id, :name ) do |b| %>
       <%= b.label { b.check_box + b.text }  %>  
     <% end %> 
-
-    
   </div>
   
-
-
   <div class="actions">
     <%= form.submit %>
   </div>
