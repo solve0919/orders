@@ -18,6 +18,7 @@ class RequestsController < ApplicationController
 
   def case_status
     @request.case_status?(current_user)
+    @request.save
     redirect_to request_path
   end
 

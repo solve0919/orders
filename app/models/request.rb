@@ -14,17 +14,17 @@ class Request < ApplicationRecord
     self.work! if self.orders?
 
     if self.consultation?
-      if self.order.user_id = user.id
+      if self.order.user_id == user.id
         self.judge_order = true
       end
-      if self.contractor.user_id = user.id
+      if self.contractor.user_id == user.id
         self.judge_contractor = true
       end
-      if self.judge_contractor = true && self.judge_order = true
+      if self.judge_contractor == true && self.judge_order == true
         self.orders!
       end
     end
-    
+
     self.consultation! if self.request?
   end
 end
