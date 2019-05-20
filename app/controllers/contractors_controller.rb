@@ -79,7 +79,7 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description)
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :image)
     end
 
     def ensure_correct_user
