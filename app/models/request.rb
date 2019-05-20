@@ -20,10 +20,11 @@ class Request < ApplicationRecord
       if self.contractor.user_id == user.id
         self.judge_contractor = true
       end
-      if self.judge_contractor == true && self.judge_order == true
+      if self.judge_contractor && self.judge_order 
         self.orders!
       end
     end
+    self.save!
 
     self.consultation! if self.request?
   end
