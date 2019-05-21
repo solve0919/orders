@@ -51,6 +51,12 @@
     <% end %> 
   </div>
   
+    <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
