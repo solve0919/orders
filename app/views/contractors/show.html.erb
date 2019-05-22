@@ -38,7 +38,7 @@
 <p>
   <strong>category:</strong>
   <%  @categories.each do |cate|  %>
-    <%= cate.name   %>
+    <%= cate.name if ContractorCategory.exists?(category_id: cate.id)  %>
   <% end %>
 </p>
 
