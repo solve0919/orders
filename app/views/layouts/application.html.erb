@@ -10,12 +10,16 @@
   </head>
 
   <body>
-  <h1><a href="/">original order</a></h1>
+<nav class="navbar navbar-light bg-dark">
+  <a class="navbar-brand text-white" href="/">original order</a>
+  <button type="button" class="btn"><%= link_to("ログアウト", "/logout")%></button>
+</nav>
+
   <br>
   <% if current_user != nil %>
-    <p><%= link_to("ログアウト", "/logout")%></p>
+
+    
     <p>アカウントNo:<%= current_user.id  %></p>
-    <p>-------------------------------</p>
   <% end %>
     <%= yield %>
   </body>
