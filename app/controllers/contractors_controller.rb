@@ -78,6 +78,7 @@ class ContractorsController < ApplicationController
     end
     
     def ensure_correct_user
+      @contractor = Contractor.find(params[:id])
       if current_user.id != @contractor.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/contractors")
