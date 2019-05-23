@@ -10,7 +10,7 @@
   </head>
 
   <body>
-<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-top">
   <a class="navbar-brand text-white" href="/">original order</a>
   <button type="button" class="btn"><%= link_to("ログアウト", "/logout")%></button>
 </nav>
@@ -21,6 +21,8 @@
     
     <p>アカウントNo:<%= current_user.id  %></p>
   <% end %>
+  <div class ='sidespace'>
     <%= yield %>
+  </div>
   </body>
 </html>
