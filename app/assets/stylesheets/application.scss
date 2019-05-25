@@ -15,3 +15,17 @@
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.bg-top{
+  background-color:#4cbfbf;
+}
+
+.sidespace{
+  padding-left:10%;
+  padding-right:10%;
+}
+
+.field{
+  padding-top:10px;
+  padding-bottom:10px;
+}

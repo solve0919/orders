@@ -76,8 +76,12 @@ class RequestsController < ApplicationController
   end
 
   private
-    def ensure_correct_user 
+
+    def set_request
       @request = Request.find(params[:id])
+    end
+
+    def ensure_correct_user 
       @order = @request.order
       @contractor = @request.contractor
       unless @request.can_access?(current_user)

@@ -1,6 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<div class ="pl-3">
+  <div class='container pt-2'>
+    <div class='row border-top border-bottom'>
+      <div class = "h3 pt-2 pb-2">
+        <%= @contractor.name %>
+      </div>
+      <div class="pl-3">
+        カテゴリ:<%= @contractor.name %>
+      </div>
+    </div>
+  </div>
+  
+  <div class='container'>
+    <div class='row'>
+      <div class = "h4 pt-3">
+        <%= @contractor.description %>
+      </div>
+    </div>
+  </div>
+
+<% if @contractor.myself?(current_user)  %>
+
+  <%= link_to 'Edit', edit_contractor_path(@contractor) %> 
+<% else %>
+  <p><%= link_to("注文する",new_request_path(id: @contractor.id) , class: 'btn btn-primary' )%></p>
+<% end %>
+
+
+<br><br><br><br><br><br><br><br>
+<p>
   <strong>User:</strong>
   <%= @contractor.user_id %>
 </p>

@@ -13,7 +13,18 @@
 <% end %>
 <%= link_to('発注状況へ', "/requests")%>
 
-<h1 class="pl-3">受注者リスト</h1>
+<h1 class="">受注者リスト</h1>
+<% @contractors.each do |contractor| %>
+  <div class="shadow p-3 mb-5 bg-light rounded">
+    <p class="h4"><%=link_to contractor.name , contractor %></a> <a class ='h6'>カテゴリ:カテゴリを表示</p>
+    <p class="pt-3">制作地域:<%= contractor.prefectures %></p>
+    <p class="h6 pt-3">説明:<%= contractor.description %></p>
+  </div>
+
+<% end %>
+
+
+
 
 <table>
   <thead>

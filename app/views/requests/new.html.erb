@@ -1,5 +1,7 @@
-<h1>発注</h1>
-<p>会社名:<%= @contractor.name%></p>
+<h2>発注内容</h2>
+<div class="border-top border-bottom pt-3 pb-2">
+  <h4>会社名:<%= @contractor.name%></h4>
+</div>
 
 <%= render 'form', request: @request %>
 
