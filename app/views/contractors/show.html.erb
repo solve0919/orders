@@ -37,8 +37,8 @@
 
 <p>
   <strong>category:</strong>
-  <% @categories.each do |cate|  %>
-    <%= Category.find(cate.category_id).name %>
+  <% @contractor.categories.each do |cate|  %>
+    <%= cate.name %>
   <% end %>
 </p>
 
