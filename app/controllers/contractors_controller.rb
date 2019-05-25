@@ -16,8 +16,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/1.json
   def show
     @contractor = Contractor.find(params[:id])
-    @categories = Category.all
-    # @group = Category.find(params[:category_id])
+    @categories = ContractorCategory.where(contractor_id: @contractor.id)
   end
 
   # GET /contractors/new
