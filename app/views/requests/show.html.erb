@@ -59,10 +59,13 @@
 
 
 <p>
-<% if @request.class.statuses[@request.status] == 0 && current_user.id == @request.contractor.id %>
-  <%= link_to "受注する", case_status_request_path , class: 'btn btn-default' %>
-<% end %>
-  <%= link_to @request.status, case_status_request_path(@request), method: :patch %>
+  <% if @request.class.statuses[@request.status] == 0 && @request.contractor?(current_user) %>
+    <%= link_to "受注する", case_status_request_path(@request) , method: :patch , class: 'btn btn-default' %>
+  <% end %>
+
+  <% if @request.consultation? && ( @request.contractor?(current_user) || @request.order?(current_user) )%>
+    <%= link_to @request.status, case_status_request_path(@request), method: :patch , class: 'btn btn-default' %>
+  <% end %>
 </p>
 
 <%= link_to '変更', edit_request_path(@request) %> |

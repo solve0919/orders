@@ -8,6 +8,14 @@ class Request < ApplicationRecord
     user.id == self.contractor.user_id ||  user.id == self.order.user_id
   end
 
+  def contractor?(user)
+    user.id == self.contractor.id
+  end
+  
+  def order?(user)
+    user.id == self.order.id
+  end
+
   def case_status?(user)
     self.completion! if self.shipping?
     self.shipping! if self.work?
