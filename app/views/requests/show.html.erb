@@ -57,6 +57,7 @@
   <%= @request.status_i18n %>
 </p>
 
+
 <p>
 <% if @request.class.statuses[@request.status] == 0 && current_user.id == @request.contractor.id %>
   <%= link_to "受注する", case_status_request_path , class: 'btn btn-default' %>

@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem 'enum_help' 
+gem 'rails-i18n'
+gem 'pry-byebug'
+
 gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
