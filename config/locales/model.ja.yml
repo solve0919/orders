@@ -2,7 +2,7 @@ ja:
   enums:
     request:
       status:
-        request: '依頼'
+        request: '依頼中'
         consultation: '相談中'
         orders: '受注(内容、金額確定)'
         work: '製作中'
