@@ -66,6 +66,14 @@
   <% if @request.consultation? && ( @request.contractor?(current_user) || @request.order?(current_user) )%>
     <%= link_to @request.status, case_status_request_path(@request), method: :patch , class: 'btn btn-default' %>
   <% end %>
+
+  <% if (@request.orders? || @request.work?)  && @request.contractor?(current_user) %>
+    <%= link_to @request.status, case_status_request_path(@request), method: :patch , class: 'btn btn-default' %>
+  <% end %>
+
+  <% if @request.shipping? && @request.order?(current_user) %>
+    <%= link_to @request.status, case_status_request_path(@request), method: :patch , class: 'btn btn-default' %>
+  <% end %>
 </p>
 
 <%= link_to '変更', edit_request_path(@request) %> |
