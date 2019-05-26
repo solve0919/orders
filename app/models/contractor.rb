@@ -6,4 +6,8 @@ class Contractor < ApplicationRecord
   accepts_nested_attributes_for :contractor_categories
 
   validates :description, length: { in: 10..400 }
+
+  def myself?(user)
+    user.id == self.user.id
+  end
 end
