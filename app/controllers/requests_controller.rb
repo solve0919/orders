@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy ,:case_status]
   before_action :ensure_correct_user , only: [:show ,:edit ,:update, :destroy ,:case_status ]
   
 
@@ -18,7 +17,7 @@ class RequestsController < ApplicationController
   end
 
   def case_status
-    @request.case_status?
+    @request.case_status?(current_user)
     redirect_to request_path
   end
 
