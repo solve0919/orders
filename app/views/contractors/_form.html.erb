@@ -44,6 +44,13 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.collection_check_boxes(:category_ids , Category.all , :id, :name ) do |b| %>
+      <%= b.label { b.check_box + b.text }  %>  
+    <% end %> 
+  </div>
+  
     <div class="field">
     <%= form.label :image %>
     <%= form.file_field :images, multiple: true %>

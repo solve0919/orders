@@ -35,6 +35,14 @@
   <%= @contractor.description %>
 </p>
 
+<p>
+  <strong>category:</strong>
+  <% @contractor.categories.each do |cate|  %>
+    <%= cate.name %>
+  <% end %>
+</p>
+
+
 <% if @contractor.myself?(current_user)  %>
   <%= link_to 'Edit', edit_contractor_path(@contractor) %> |
 <% else %>

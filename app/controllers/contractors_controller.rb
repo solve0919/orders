@@ -1,6 +1,5 @@
 class ContractorsController < ApplicationController
-  before_action :set_contractor, {only: [:show, :edit, :update, :destroy]}
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy,]}
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   protect_from_forgery :except => [:new ,:create]
   
 
@@ -16,6 +15,7 @@ class ContractorsController < ApplicationController
   # GET /contracto  rs/1
   # GET /contractors/1.json
   def show
+    @contractor = Contractor.find(params[:id])
   end
 
   # GET /contractors/new
@@ -69,24 +69,19 @@ class ContractorsController < ApplicationController
     end
   end
 
-  private
-
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contractor
-      @contractor = Contractor.find(params[:id])
-    end
+  private 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :image)
+      params.require(:contractor).permit(:user_id, :name, :adress, :birthday, :prefectures, :phone_number, :description, :image ,:category_ids => [])
     end
-
+    
     def ensure_correct_user
+      @contractor = Contractor.find(params[:id])
       if current_user.id != @contractor.user_id
         flash[:notice] = "権限がありません"
         redirect_to("/contractors")
-      else
       end
     end
+  
 end
