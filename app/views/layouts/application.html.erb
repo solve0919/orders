@@ -10,9 +10,12 @@
   </head>
 
   <body>
+
 <nav class="navbar navbar-light bg-top">
   <a class="navbar-brand text-white" href="/">original order</a>
+<% unless current_user.nil? %>
   <button type="button" class="btn"><%= link_to("ログアウト", "/logout")%></button>
+<% end %>
 </nav>
 
   <br>
