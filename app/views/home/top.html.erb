@@ -2,9 +2,12 @@
 <h2>トップ画面</h2>
 <%= link_to("ログイン","login") %>
 <%= link_to("サインイン","/users/sign_up") %>
-<p>------------------------------------------------------------</p>
+
 <% @contractors.each do |con|  %>
-<p><%=  con.name  %></p>
-<p><%=  con.description  %></p>
-<p>------------------------------------------------------------</p>
+<div class ="container">
+  <div class ="row">
+    <div><%=  con.name  %></div>
+    <div><%=  con.description  %></div>
+  </div>
+</div>
 <% end %>
