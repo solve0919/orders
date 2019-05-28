@@ -5,9 +5,11 @@ class SampleMailer < ApplicationMailer
   #
   #   en.sample_mailer.send_when_update.subject
   #
+
+  
   def send_when_update
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: 'saltynem99@gmail.com'
   end
 end
