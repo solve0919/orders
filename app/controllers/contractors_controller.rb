@@ -49,11 +49,11 @@ class ContractorsController < ApplicationController
   # PATCH/PUT /contractors/1
   # PATCH/PUT /contractors/1.json
   def update
-    SampleMailer.send_when_update(current_user).deliver
     respond_to do |format|
       if @contractor.update(contractor_params)
         format.html { redirect_to @contractor, notice: 'Contractor was successfully updated.' }
         format.json { render :show, status: :ok, location: @contractor }
+        SampleMailer.send_when_update.deliver
       else
         format.html { render :edit }
         format.json { render json: @contractor.errors, status: :unprocessable_entity }
