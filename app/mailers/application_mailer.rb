@@ -1,6 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   default from:     "メールテスト運営局",
-          bcc:      "saltynem99@gmail.com",
-          reply_to: "saltynem99@gmail.com"
+          bcc:      "saltnem@yahoo.co.jp",
+          reply_to: "saltnem@yahoo.co.jp"
   layout 'mailer'
 end

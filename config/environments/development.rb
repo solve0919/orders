@@ -1,15 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {  host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'smtp.gmail.com',
+    port:                 465,
+    address:              'smtp.mail.yahoo.co.jp',
+    domain:               'yahoo.co.jp',
     user_name:            ENV['EMAIL_ADDRESS'],
     password:             ENV['EMAIL_PASSWORD'],
-    authentication:       'login',
+    authentication:       'plain',
     enable_starttls_auto: true
   }
 
